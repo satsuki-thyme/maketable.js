@@ -4,43 +4,18 @@
 let container = document.querySelector("#container")
 let sourceOfThead = ["a", "b", "c"]
 let sourceOfTbody = [
-  [0, 1, 2],
-  [3, 4, 5]
+  [1, 2, 3],
+  [4, 5, 6]
 ]
 container.innerHTML = maketable([sourceOfTbody, sourceOfThead], ["table-id", "table-class"])
 </script>
 <style>
-table,
-td,
-th {
-  border-style: solid;
-  border-color: var(--dark-2);
-}
 table {
-  border-collapse: separate;
-  border-spacing: 0;
-  border-width: 1px;
+  border-collapse: collapse;
 }
 td,
 th {
-  padding: 5px 10px;
-  vertical-align: top;
-  border-width: 1px 0 0 1px;
-}
-tr:first-child td,
-tr:first-child th {
-  border-top-width: 0;
-}
-td:first-child,
-th:first-child {
-  border-left-width: 0;
-}
-thead + tbody tr:first-child td,
-thead + tbody tr:first-child th {
-  border-top-width: 1px;
-}
-tfoot tr:first-child td,
-tfoot tr:first-child th {
-  border-top-width: 1px;
+  padding: 10px;
+  border: 1px solid #000;
 }
 </style>
