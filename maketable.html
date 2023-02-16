@@ -13,21 +13,25 @@
         position: absolute;
         margin: auto;
       }
-      .input {
-        width: 39%;
+      .inputarea {
+        display: inline-block;
+        width: 59%;
       }
-      .input + .input {
-        width: 59%
+      .inputarea + .inputarea {
+        width: 39%
+      }
+      .input {
+        width: 100%;
       }
       .output {
         width: 49%;
       }
       .textarea {
-        padding: 5px;
+        padding: 10px;
         box-sizing: border-box;
         font-size: 13px;
       }
-      .input + .input,
+      .inputarea + .inputarea,
       .output + .output {
         margin-left: 1%;
       }
@@ -83,12 +87,12 @@
   </head>
   <body>
     <div id="container">
-      <textarea id="thead" class="input textarea">["A", "B", "C", "D", "E"]</textarea>
-      <textarea id="tbody" class="input textarea">[
+      <label class="inputarea">tbody<textarea id="tbody" class="input textarea">[
   ["alpha", "beta", "chi", "delta", "epsilon"],
   ["Α", "Β", "Χ", "Δ", "Ε"],
   ["α", "β", "χ", "δ", "ε"]
-]</textarea>
+]</textarea></label>
+      <label class="inputarea">thead<textarea id="thead" class="input textarea">["A", "B", "C", "D", "E"]</textarea></label>
       <input type="button" id="execute" value="テーブル作成">
       <textarea id="output" class="textarea output"></textarea>
       <div id="demo" class="output"></div>
