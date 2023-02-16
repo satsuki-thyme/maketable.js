@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="../base.css">
     <link rel="stylesheet" href="../color-scheme-standard.css">
     <script src="maketable.js"></script>
+    <script src="../htmlshape.js/htmlshape.js"></script>
     <style>
       #container {
         position: absolute;
@@ -71,9 +72,11 @@
         elm_container.style.height = elm_container.getBoundingClientRect().height + "px"
         elm_container.style.inset = 0
         elm_execute.onclick = () => {
-          let tableHtml = maketable([JSON.parse(elm_tbody.value), JSON.parse(elm_thead.value)], [,])
-          elm_output.value = tableHtml
-          elm_demo.innerHTML = tableHtml
+          htmlshape(maketable([JSON.parse(elm_tbody.value), JSON.parse(elm_thead.value)], [,]))
+          .then(rly => {
+            elm_output.value = rly
+            elm_demo.innerHTML = rly
+          })
         }
       })
     </script>
