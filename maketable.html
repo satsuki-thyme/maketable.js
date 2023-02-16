@@ -76,7 +76,11 @@
         elm_container.style.height = elm_container.getBoundingClientRect().height + "px"
         elm_container.style.inset = 0
         elm_execute.onclick = () => {
-          htmlshape(maketable([JSON.parse(elm_tbody.value), JSON.parse(elm_thead.value)], [,]))
+          let tbody = ""
+          let thead = ""
+          if (elm_tbody.value !== "") tbody = JSON.parse(elm_tbody.value)
+          if (elm_thead.value !== "") thead = JSON.parse(elm_thead.value)
+          htmlshape(maketable([tbody, thead], [,]))
           .then(rly => {
             elm_output.value = rly
             elm_demo.innerHTML = rly
