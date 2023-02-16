@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ja-JP">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, maximum-scale=1, user-scalable=no">
+    <title>maketable</title>
+    <link rel="stylesheet" href="../base.css">
+    <link rel="stylesheet" href="../color-scheme-standard.css">
+    <script src="maketable.js"></script>
+    <style>
+      #container {
+        position: absolute;
+        margin: auto;
+      }
+      .input {
+        width: 39%;
+      }
+      .input + .input {
+        width: 59%
+      }
+      .output {
+        width: 49%;
+      }
+      .textarea {
+        padding: 5px;
+        box-sizing: border-box;
+        font-size: 13px;
+      }
+      .input + .input,
+      .output + .output {
+        margin-left: 1%;
+      }
+      .output {
+        margin-top: 5px;
+      }
+      #execute {
+        width: 100%;
+        padding: 3px;
+        box-sizing: border-box;
+      }
+      #demo {
+        display: inline-block;
+        position: relative;
+        box-sizing: border-box;
+        text-align: center;
+        border: 1px solid var(--dark-2);
+      }
+      #demo table {
+        display: inline-block;
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        font-size: 13px;
+      }
+    </style>
+    <script>
+      window.addEventListener("DOMContentLoaded", () => {
+        let elm_container = document.querySelector("#container")
+        let elm_thead = document.querySelector("#thead")
+        let elm_tbody = document.querySelector("#tbody")
+        let elm_output = document.querySelector("#output")
+        let elm_execute = document.querySelector("#execute")
+        let elm_demo = document.querySelector("#demo")
+        let inputHeight = elm_thead.getBoundingClientRect().width * (9 / 16) + "px"
+        elm_thead.style.height = inputHeight
+        elm_tbody.style.height = inputHeight
+        let outputHeight = elm_output.getBoundingClientRect().width * (9 / 16) + "px"
+        elm_output.style.height = outputHeight
+        elm_demo.style.height = outputHeight
+        elm_container.style.width = elm_container.getBoundingClientRect().width + "px"
+        elm_container.style.height = elm_container.getBoundingClientRect().height + "px"
+        elm_container.style.inset = 0
+        elm_execute.onclick = () => {
+          let tableHtml = maketable([JSON.parse(elm_tbody.value), JSON.parse(elm_thead.value)], [,])
+          elm_output.value = tableHtml
+          elm_demo.innerHTML = tableHtml
+        }
+      })
+    </script>
+  </head>
+  <body>
+    <div id="container">
+      <textarea id="thead" class="input textarea">["A", "B", "C", "D", "E"]</textarea>
+      <textarea id="tbody" class="input textarea">[
+  ["alpha", "beta", "chi", "delta", "epsilon"],
+  ["Α", "Β", "Χ", "Δ", "Ε"],
+  ["α", "β", "χ", "δ", "ε"]
+]</textarea>
+      <input type="button" id="execute" value="テーブル作成">
+      <textarea id="output" class="textarea output"></textarea>
+      <div id="demo" class="output"></div>
+    </div>
+  </body>
+</html>
