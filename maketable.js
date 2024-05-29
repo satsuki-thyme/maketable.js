@@ -1,4 +1,4 @@
-function maketable(tbodyArray, theadArray, id, clss) {
+function maketable(tbodyArray, theadArray, clss, id) {
   let insId = id ? ` id="${id}"` : ``
   let insClss = clss ? ` class="${clss}"` : ``
   let multiLines = (tbodyArray[0] instanceof Array || typeof tbodyArray[0] === `array`) ? true : false
